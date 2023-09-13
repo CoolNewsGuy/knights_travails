@@ -9,11 +9,11 @@ export class Spot {
 }
 
 class Node {
-    data: Spot;
+    coordinates: Spot;
     nextPossibleMoves: Spot[] | null;
 
-    constructor(data: Spot) {
-        this.data = data;
+    constructor(coordinates: Spot) {
+        this.coordinates = coordinates;
         this.nextPossibleMoves = null;
     }
 
