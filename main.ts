@@ -1,4 +1,4 @@
-import { Spot } from "./tree.ts";
+import { PossibleMovesTree, Spot } from "./tree.ts";
 
 function generateChessBoard(): Spot[] {
     const board: Spot[] = [];
@@ -14,3 +14,4 @@ function generateChessBoard(): Spot[] {
 }
 
 const board = generateChessBoard();
+const tree = new PossibleMovesTree();
