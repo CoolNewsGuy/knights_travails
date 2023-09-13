@@ -6,6 +6,10 @@ export class Spot {
         this.x = x;
         this.y = y;
     }
+
+    isOutOfBoard(): boolean {
+        return this.x < 0 || this.x > 7 || this.y < 0 || this.y > 7;
+    }
 }
 
 class Node {
@@ -15,15 +19,6 @@ class Node {
     constructor(coordinates: Spot) {
         this.coordinates = coordinates;
         this.nextPossibleMoves = null;
-    }
-
-    isOutOfBoard(): boolean {
-        return (
-            this.data.x < 0 ||
-            this.data.x > 7 ||
-            this.data.y < 0 ||
-            this.data.y > 7
-        );
     }
 }
 
