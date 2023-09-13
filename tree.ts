@@ -8,6 +8,15 @@ class Node {
         this.data = data;
         this.nextPossibleMoves = null;
     }
+
+    isOutOfBoard(): boolean {
+        return (
+            this.data.x < 0 ||
+            this.data.x > 7 ||
+            this.data.y < 0 ||
+            this.data.y > 7
+        );
+    }
 }
 
 export class PossibleMovesTree {
