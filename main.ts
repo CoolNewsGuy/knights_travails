@@ -14,4 +14,6 @@ function generateChessBoard(): Spot[] {
 }
 
 const board = generateChessBoard();
-const tree = new PossibleMovesTree();
+const tree = new PossibleMovesTree({ x: 7, y: 7 });
+
+console.log(tree.getPossibleMoves());
