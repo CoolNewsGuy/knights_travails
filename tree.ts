@@ -1,4 +1,12 @@
-export type Spot = { x: number; y: number };
+export class Spot {
+    x: number;
+    y: number;
+
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+    }
+}
 
 class Node {
     data: Spot;
