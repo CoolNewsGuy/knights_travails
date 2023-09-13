@@ -1,2 +1,1 @@
-export type Spot = [number, number];
-
+export type Spot = { x: number; y: number };

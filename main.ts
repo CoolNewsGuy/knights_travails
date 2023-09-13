@@ -6,7 +6,7 @@ function generateChessBoard(): Spot[] {
 
     for (const x of numbers) {
         for (const y of numbers) {
-            board.push([x, y]);
+            board.push({ x, y });
         }
     }
 
@@ -14,4 +14,3 @@ function generateChessBoard(): Spot[] {
 }
 
 const board = generateChessBoard();
-
