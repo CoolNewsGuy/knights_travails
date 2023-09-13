@@ -30,52 +30,29 @@ export class PossibleMovesTree {
             currentPosition === null ? null : new Node(currentPosition);
     }
 
-    getPossibleMoves(): Node[] | null {
+    getPossibleMoves(): Spot[] | null {
         if (
             this.currentPosition === null ||
-            this.currentPosition.isOutOfBoard()
+            this.currentPosition.coordinates.isOutOfBoard()
         ) {
             return null;
         }
 
         const [currentX, currentY] = [
-            this.currentPosition.data.x,
-            this.currentPosition.data.y,
+            this.currentPosition.coordinates.x,
+            this.currentPosition.coordinates.y,
         ];
-        const possibleMoves: Node[] = [
-            {
-                x: currentX + 2,
-                y: currentY + 1,
-            },
-            {
-                x: currentX + 2,
-                y: currentY - 1,
-            },
-            {
-                x: currentX - 2,
-                y: currentY + 1,
-            },
-            {
-                x: currentX - 2,
-                y: currentY - 1,
-            },
-            {
-                y: currentX + 2,
-                x: currentY + 1,
-            },
-            {
-                y: currentX + 2,
-                x: currentY - 1,
-            },
-            {
-                y: currentX - 2,
-                x: currentY + 1,
-            },
-            {
-                y: currentX - 2,
-                x: currentY - 1,
-            },
-        ].map((spot) => new Node(spot));
+
+        const possibleMoves: Spot[] = [
+            new Spot(currentX + 2, currentY + 1),
+            new Spot(currentX + 2, currentY - 1),
+            new Spot(currentX - 2, currentY + 1),
+            new Spot(currentX - 2, currentY - 1),
+            new Spot(currentX + 1, currentY + 2),
+            new Spot(currentX + 1, currentY - 2),
+            new Spot(currentX - 1, currentY + 2),
+            new Spot(currentX - 1, currentY - 2),
+        ];
 
         return possibleMoves.filter((spot) => !spot.isOutOfBoard());
     }
