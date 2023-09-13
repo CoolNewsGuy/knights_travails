@@ -1,5 +1,7 @@
-function generateChessBoard(): number[][] {
-    const board = [];
+import { Spot } from "./tree.ts";
+
+function generateChessBoard(): Spot[] {
+    const board: Spot[] = [];
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7];
 
     for (const x of numbers) {
