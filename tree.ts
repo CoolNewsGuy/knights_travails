@@ -15,10 +15,12 @@ export class Spot {
 class Node {
     coordinates: Spot;
     nextPossibleMoves: Node[];
+    score: number;
 
     constructor(coordinates: Spot) {
         this.coordinates = coordinates;
         this.nextPossibleMoves = [];
+        this.score = 0;
     }
 }
 
