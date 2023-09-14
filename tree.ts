@@ -10,6 +10,10 @@ export class Spot {
     isOutOfBoard(): boolean {
         return this.x < 0 || this.x > 7 || this.y < 0 || this.y > 7;
     }
+
+    equals(other: Spot): boolean {
+        return this.x === other.x && this.y === other.y;
+    }
 }
 
 class Node {
