@@ -14,11 +14,11 @@ export class Spot {
 
 class Node {
     coordinates: Spot;
-    nextPossibleMoves: Spot[] | null;
+    nextPossibleMoves: Node[];
 
     constructor(coordinates: Spot) {
         this.coordinates = coordinates;
-        this.nextPossibleMoves = null;
+        this.nextPossibleMoves = [];
     }
 }
 
