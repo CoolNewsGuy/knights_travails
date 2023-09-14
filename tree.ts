@@ -30,12 +30,12 @@ export class PossibleMovesTree {
             currentPosition === null ? null : new Node(currentPosition);
     }
 
-    getPossibleMoves(): Spot[] | null {
+    getPossibleMoves(): Spot[] {
         if (
             this.currentPosition === null ||
             this.currentPosition.coordinates.isOutOfBoard()
         ) {
-            return null;
+            return [];
         }
 
         const [currentX, currentY] = [
