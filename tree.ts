@@ -29,11 +29,10 @@ class Node {
 }
 
 export class PossibleMovesTree {
-    currentPosition: Node | null;
+    root: Node | null;
 
-    constructor(currentPosition: Spot | null = null) {
-        this.currentPosition =
-            currentPosition === null ? null : new Node(currentPosition);
+    constructor(root: Spot | null = null) {
+        this.root = root === null ? null : new Node(root);
     }
 
     insertNextPossibleMoves(position: Node | null): void {
