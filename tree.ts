@@ -36,7 +36,7 @@ export class PossibleMovesTree {
             currentPosition === null ? null : new Node(currentPosition);
     }
 
-    getNextPossibleMoves(position: Node | null): void {
+    insertNextPossibleMoves(position: Node | null): void {
         if (position === null || position.coordinates.isOutOfBoard()) {
             return;
         }
