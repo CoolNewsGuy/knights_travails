@@ -36,17 +36,14 @@ export class PossibleMovesTree {
             currentPosition === null ? null : new Node(currentPosition);
     }
 
-    getPossibleMoves(): Node[] {
-        if (
-            this.currentPosition === null ||
-            this.currentPosition.coordinates.isOutOfBoard()
-        ) {
-            return [];
+    getNextPossibleMoves(position: Node | null): void {
+        if (position === null || position.coordinates.isOutOfBoard()) {
+            return;
         }
 
         const [currentX, currentY] = [
-            this.currentPosition.coordinates.x,
-            this.currentPosition.coordinates.y,
+            position.coordinates.x,
+            position.coordinates.y,
         ];
 
         const possibleMoves: Node[] = [
@@ -62,6 +59,6 @@ export class PossibleMovesTree {
             .filter((spot) => !spot.isOutOfBoard())
             .map((spot) => new Node(spot));
 
-        return possibleMoves;
+        position.nextPossibleMoves = possibleMoves;
     }
 }
