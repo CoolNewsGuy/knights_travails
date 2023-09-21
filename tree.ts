@@ -82,4 +82,15 @@ export class PossibleMovesTree {
 
         position.nextPossibleMoves = possibleMoves;
     }
+
+    levelOrder(func: (node: Node) => unknown): void {
+        const queue: Node[] = [this.root];
+
+        while (queue.length !== 0) {
+            const firstElement = queue.pop()!;
+            func(firstElement);
+
+            queue.unshift(...firstElement.nextPossibleMoves);
+        }
+    }
 }
