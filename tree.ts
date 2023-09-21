@@ -34,6 +34,27 @@ export class PossibleMovesTree {
 
     constructor(root: Spot, goal: Spot) {
         this.goal = goal;
+        this.root = this.buildTree(new Node(root));
+    }
+
+    private buildTree(root: Node, depth = 0): Node {
+        if (root.coordinates.equals(this.goal)) {
+            return root;
+        }
+
+        this.insertNextPossibleMoves(root);
+
+        const isGoalFound = root.nextPossibleMoves.find((spotNode) =>
+            spotNode.coordinates.equals(this.goal)
+        );
+
+        if (!isGoalFound && depth !== 7) {
+            for (let node of root.nextPossibleMoves) {
+                node = this.buildTree(node, depth + 1);
+            }
+        }
+
+        return root;
     }
 
     insertNextPossibleMoves(position: Node | null): void {
