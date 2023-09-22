@@ -72,17 +72,19 @@ class PossibleMovesTree {
             .map((spot) => new Node(spot));
     }
 
-    minHeight(node: Node): number {
-        if (node.nextPossibleMoves.length === 0) {
-            return 0;
+    evaluateScores(root: Node): void {
+        if (root.nextPossibleMoves.length === 0) {
+            root.score = 0;
+            return;
         }
 
-        const heights = [];
+        const heights: number[] = [];
 
-        for (const childNode of node.nextPossibleMoves) {
-            heights.push(this.minHeight(childNode));
+        for (const childNode of root.nextPossibleMoves) {
+            this.evaluateScores(childNode);
+            heights.push(childNode.score);
         }
 
-        return 1 + Math.min(...heights);
+        root.score = 1 + Math.min(...heights);
     }
 }
