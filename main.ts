@@ -27,3 +27,11 @@ class Node {
         this.score = 0;
     }
 }
+
+class PossibleMovesTree {
+    root: Node;
+
+    constructor(root: Node) {
+        this.root = root;
+    }
+}
