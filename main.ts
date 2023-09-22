@@ -88,3 +88,34 @@ class PossibleMovesTree {
         root.score = 1 + Math.min(...heights);
     }
 }
+
+function knightMoves(from: Spot, to: Spot): Spot[] {
+    if (from.isOutOfBoard() || to.isOutOfBoard()) {
+        return [];
+    }
+
+    if (from.isEqualTo(to)) {
+        return [from];
+    }
+
+    const possibleMovesTree = new PossibleMovesTree(from, to);
+    const shortestPath = [from];
+
+    possibleMovesTree.evaluateScores(possibleMovesTree.root!);
+
+    let bestNextSpotNode = possibleMovesTree.root!.nextPossibleMoves.sort(
+        (a, b) => a.score - b.score
+    )[0];
+
+    while (bestNextSpotNode.nextPossibleMoves.length !== 0) {
+        shortestPath.push(bestNextSpotNode.data);
+
+        bestNextSpotNode = bestNextSpotNode.nextPossibleMoves.sort(
+            (a, b) => a.score - b.score
+        )[0];
+    }
+
+    shortestPath.push(to);
+
+    return shortestPath;
+}
