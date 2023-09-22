@@ -32,7 +32,30 @@ class PossibleMovesTree {
     root: Node | null;
 
     constructor(root: Node) {
-        this.root = root;
+        this.root = this.buildTree(root);
+    }
+
+    private buildTree(root: Node, goal?: Spot, depth = 0): Node | null {
+        if (root.data.isOutOfBoard()) {
+            return null;
+        }
+
+        this.insertPossibleMoves(root);
+        let isGoalFound = false;
+
+        if (goal !== undefined) {
+            isGoalFound = !!root.nextPossibleMoves.find((node) =>
+                node.data.isEqualTo(goal)
+            );
+        }
+
+        if (depth < 7 && !isGoalFound) {
+            for (let node of root.nextPossibleMoves) {
+                node = this.buildTree(node, goal, depth + 1)!;
+            }
+        }
+
+        return root;
     }
 
     insertPossibleMoves(node: Node): void {
