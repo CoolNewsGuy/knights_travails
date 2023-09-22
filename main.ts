@@ -31,23 +31,20 @@ class Node {
 class PossibleMovesTree {
     root: Node | null;
 
-    constructor(root: Spot, goal?: Spot) {
+    constructor(root: Spot, goal: Spot) {
         this.root = this.buildTree(new Node(root), goal);
     }
 
-    private buildTree(root: Node, goal?: Spot, depth = 0): Node | null {
+    private buildTree(root: Node, goal: Spot, depth = 0): Node | null {
         if (root.data.isOutOfBoard()) {
             return null;
         }
 
         this.insertPossibleMoves(root);
-        let isGoalFound = false;
-
-        if (goal !== undefined) {
-            isGoalFound = !!root.nextPossibleMoves.find((node) =>
-                node.data.isEqualTo(goal)
-            );
-        }
+        
+        const isGoalFound = !!root.nextPossibleMoves.find((node) =>
+            node.data.isEqualTo(goal)
+        );
 
         if (depth < 7 && !isGoalFound) {
             for (let node of root.nextPossibleMoves) {
