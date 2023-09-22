@@ -15,3 +15,15 @@ class Spot {
         return this.x > 7 || this.y > 7 || this.x < 0 || this.y < 0;
     }
 }
+
+class Node {
+    data: Spot;
+    nextPossibleMoves: Node[];
+    score: number;
+
+    constructor(data: Spot) {
+        this.data = data;
+        this.nextPossibleMoves = [];
+        this.score = 0;
+    }
+}
