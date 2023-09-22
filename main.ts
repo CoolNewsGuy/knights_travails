@@ -6,4 +6,8 @@ class Spot {
         this.x = x;
         this.y = y;
     }
+
+    isEqualTo(other: Spot): boolean {
+        return this.x === other.x && this.y === other.y;
+    }
 }
