@@ -29,7 +29,7 @@ class Node {
 }
 
 class PossibleMovesTree {
-    root: Node;
+    root: Node | null;
 
     constructor(root: Node) {
         this.root = root;
