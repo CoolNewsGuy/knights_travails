@@ -41,7 +41,7 @@ class PossibleMovesTree {
         }
 
         this.insertPossibleMoves(root);
-        
+
         const isGoalFound = !!root.nextPossibleMoves.find((node) =>
             node.data.isEqualTo(goal)
         );
@@ -70,5 +70,19 @@ class PossibleMovesTree {
         ]
             .filter((spot) => !spot.isOutOfBoard())
             .map((spot) => new Node(spot));
+    }
+
+    minHeight(node: Node): number {
+        if (node.nextPossibleMoves.length === 0) {
+            return 0;
+        }
+
+        const heights = [];
+
+        for (const childNode of node.nextPossibleMoves) {
+            heights.push(this.minHeight(childNode));
+        }
+
+        return 1 + Math.min(...heights);
     }
 }
