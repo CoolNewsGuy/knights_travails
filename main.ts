@@ -31,8 +31,8 @@ class Node {
 class PossibleMovesTree {
     root: Node | null;
 
-    constructor(root: Node) {
-        this.root = this.buildTree(root);
+    constructor(root: Node, goal?: Spot) {
+        this.root = this.buildTree(root, goal);
     }
 
     private buildTree(root: Node, goal?: Spot, depth = 0): Node | null {
