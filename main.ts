@@ -34,4 +34,21 @@ class PossibleMovesTree {
     constructor(root: Node) {
         this.root = root;
     }
+
+    insertPossibleMoves(node: Node): void {
+        const [x, y] = [node.data.x, node.data.y];
+
+        node.nextPossibleMoves = [
+            new Spot(x + 2, y + 1),
+            new Spot(x + 2, y - 1),
+            new Spot(x - 2, y + 1),
+            new Spot(x - 2, y - 1),
+            new Spot(x + 1, y + 2),
+            new Spot(x - 1, y + 2),
+            new Spot(x + 1, y - 2),
+            new Spot(x - 1, y - 2),
+        ]
+            .filter((spot) => !spot.isOutOfBoard())
+            .map((spot) => new Node(spot));
+    }
 }
