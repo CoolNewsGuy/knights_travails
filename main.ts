@@ -1,4 +1,4 @@
-export class Spot {
+class Spot {
     x: number;
     y: number;
 
@@ -89,7 +89,7 @@ class PossibleMovesTree {
     }
 }
 
-export function knightMoves(from: Spot, to: Spot): Spot[] {
+function knightMoves(from: Spot, to: Spot): Spot[] {
     if (from.isOutOfBoard() || to.isOutOfBoard()) {
         return [];
     }
@@ -119,3 +119,5 @@ export function knightMoves(from: Spot, to: Spot): Spot[] {
 
     return shortestPath;
 }
+
+export { Spot, knightMoves };
