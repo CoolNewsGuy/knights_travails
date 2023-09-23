@@ -35,6 +35,7 @@ class PossibleMovesTree {
         this.root = this.buildTree(new Node(root), goal);
     }
 
+    // Create a small tree of possible moves
     private buildTree(root: Node, goal: Spot, depth = 0): Node | null {
         if (root.data.isOutOfBoard()) {
             return null;
@@ -46,6 +47,7 @@ class PossibleMovesTree {
             node.data.isEqualTo(goal)
         );
 
+        // depth is less than 5 because the goal spot will never be of depth > 5
         if (depth < 5 && !isGoalFound) {
             for (let node of root.nextPossibleMoves) {
                 node = this.buildTree(node, goal, depth + 1)!;
@@ -55,9 +57,11 @@ class PossibleMovesTree {
         return root;
     }
 
+    // Get next possible moves for a node
     insertPossibleMoves(node: Node): void {
         const [x, y] = [node.data.x, node.data.y];
 
+        // All possible moves with the ones of out board removed and then convert the rest to nodes
         node.nextPossibleMoves = [
             new Spot(x + 2, y + 1),
             new Spot(x + 2, y - 1),
@@ -72,6 +76,7 @@ class PossibleMovesTree {
             .map((spot) => new Node(spot));
     }
 
+    // Calculate height of each node except the root and set it as score
     evaluateScores(root: Node): void {
         if (root.nextPossibleMoves.length === 0) {
             root.score = 0;
@@ -103,6 +108,7 @@ function knightMoves(from: Spot, to: Spot): Spot[] {
 
     possibleMovesTree.evaluateScores(possibleMovesTree.root!);
 
+    // Get the spot with the lowest score (or height)
     let bestNextSpotNode = possibleMovesTree.root!.nextPossibleMoves.sort(
         (a, b) => a.score - b.score
     )[0];
