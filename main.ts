@@ -46,7 +46,7 @@ class PossibleMovesTree {
             node.data.isEqualTo(goal)
         );
 
-        if (depth < 7 && !isGoalFound) {
+        if (depth < 5 && !isGoalFound) {
             for (let node of root.nextPossibleMoves) {
                 node = this.buildTree(node, goal, depth + 1)!;
             }
