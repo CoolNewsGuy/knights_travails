@@ -1,4 +1,4 @@
-class Spot {
+export class Spot {
     x: number;
     y: number;
 
