@@ -89,7 +89,7 @@ class PossibleMovesTree {
     }
 }
 
-function knightMoves(from: Spot, to: Spot): Spot[] {
+export function knightMoves(from: Spot, to: Spot): Spot[] {
     if (from.isOutOfBoard() || to.isOutOfBoard()) {
         return [];
     }
